@@ -22,10 +22,10 @@ function scrollFunction() {
 	if(document.querySelector('.trigger') !== null)
 	{
 		// Get the element position
-		var elm = document.querySelector('.trigger').offsetTop;
-		elm -= 70;
+		let trigger = document.querySelector('.trigger').offsetTop;
+		trigger -= 70;
 		
-		if (document.body.scrollTop >= elm || document.documentElement.scrollTop >= elm)
+		if (document.body.scrollTop >= trigger || document.documentElement.scrollTop >= trigger)
 		{
 			lightNav();
 		}else{

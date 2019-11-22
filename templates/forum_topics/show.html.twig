@@ -11,7 +11,8 @@
         </small> 
         
         <div class="forum-question mt-5">
-            <div class="header mb-3">
+            <div class="header mb-3 position-relative">
+                <img id="profile-photo" class="shadow" src="/user_photos/{{ forum_topic.author.photo }}" alt="">
                 <h5 class="d-inline-flex">{{ forum_topic.author.username }}</h5>,
                 <small class="text-muted">le {{ forum_topic.createdAt | date('d/m/Y') }} à {{ forum_topic.createdAt | date('H:i') }}</small>
                 {% if app.user and app.user.id == forum_topic.author.id %}
@@ -22,15 +23,18 @@
             {{ forum_topic.content | markdown }}
         </div>
         <hr>
+
+
         
         {# get forum id for Ajax request #}
         <input type="hidden" id="topic-id" class="{{ forum_topic.id }}" >
 
         <div id="comments-box">
-        {# Comments includes thanks to Ajax request #}
+        {# includes Comments thanks to Ajax request #}
 
         </div>
         
+        <!-- loader -->
         <div class="loader loader--style3" title="2"> 
             <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
             <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
@@ -39,6 +43,7 @@
             </svg>
         </div>
         
+        <!-- comment form -->
         {% if app.user %}
             {% include "forum_comments/_form.html.twig" %}
         {% endif %}

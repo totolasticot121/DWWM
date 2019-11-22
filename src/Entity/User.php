@@ -62,6 +62,12 @@ class User implements UserInterface
      */
     private $forumTopics;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\File(mimeTypes={ "image/png", "image/jpeg" })
+     */
+    private $photo;
+
     public function __construct()
     {
         $this->forumComments = new ArrayCollection();
@@ -190,6 +196,18 @@ class User implements UserInterface
                 $forumTopic->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo): self
+    {
+        $this->photo = $photo;
 
         return $this;
     }

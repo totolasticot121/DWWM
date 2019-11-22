@@ -52,7 +52,7 @@ class ForumTopicsController extends AbstractController
      * @Route("/new", name="forum_topics_new", methods={"GET","POST"})
      * @Route("/{id}/edit", name="forum_topics_edit", methods={"GET","POST"})
      */
-    public function addEditTopicForm(ForumTopics $forumTopic = null, Request $request, ObjectManager $manager): Response
+    public function addEditTopicForm(ForumTopics $forumTopic = null, Request $request, ObjectManager $manager)
     {
         if(!$forumTopic)
         {
@@ -89,10 +89,8 @@ class ForumTopicsController extends AbstractController
     /**
      * @Route("/{id}", name="forum_topics_show", methods={"GET","POST"})
      */
-    public function showTopic($id, Request $request, ObjectManager $manager, ForumTopicsRepository $repo): Response
-    {        
-        $forumTopic = $repo->find($id);
-             
+    public function showTopic(ForumTopics $forumTopic)
+    {                        
         return $this->render('forum_topics/show.html.twig', [
             'forum_topic' => $forumTopic,
         ]);
@@ -101,7 +99,7 @@ class ForumTopicsController extends AbstractController
     /**
      * @Route("/{id}", name="forum_topics_delete", methods={"DELETE"})
      */
-    public function deleteTopic(Request $request, ForumTopics $forumTopic, ObjectManager $manager): Response
+    public function deleteTopic(Request $request, ForumTopics $forumTopic, ObjectManager $manager)
     {
         if ($this->isCsrfTokenValid('delete'.$forumTopic->getId(), $request->request->get('_token')))
         {

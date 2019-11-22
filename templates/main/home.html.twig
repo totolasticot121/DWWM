@@ -4,19 +4,19 @@
 
     <header class="homeHead">
         <div class="desc head_resp">
-            <h1>La plateforme d'échange pour développeurs web</h1>
+            <h1>Forum d'entraide pour développeurs web</h1>
         </div>
     </header>
     
-	<section class="sec2 trigger">
+	<section class="sec2 trigger mt-5">
 		<div class="container p-5">
 			<div class="row">
 				<div class="col-lg-6 col-sm-12">
-					<img src='https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg' class="img-fluid shadow" style="max-width: 100%; height: auto; border-radius: 7px;">
+					<img src='/img/pic.png' class="img-fluid shadow-lg border border-dark" style="max-width: 100%; height: auto; border-radius: 7px;">
 				</div>
 				<div class="col-lg-6 col-sm-12">
-					<h3 class="mb-3">lorememe ipsuuum</h3>
-					<p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem ullam nulla iusto culpa autem quidem quis minima eaque. Excepturi nesciunt similique,Id deleniti eos odio obcaecati fugit accusantium quisquam beatae temporibus exercitationem tenetur sunt modi fuga aliquam.</span></p>
+					<h3 class="mb-3">Un problème dans ton code ?</h3>
+					<p><span>Tu es au bonne endroit ! Le forum DWWM te permettra d'obtenir de l'aide si tu veux débuter le développement ou si tu développe déja.</span></p>
                     <hr>
 					<p><span>Minima dolor facilis placeat, molestias accusantium illo odit enim quasi repudiandae ullam optio laboriosam.</span></p>
 				</div>
@@ -24,23 +24,28 @@
 		</div>
 	</section>
 
-    <section class="sec3">
-		<div class="container p-5">
-			<div class="row">
-
-				<div class="col-lg-6 col-sm-12">
-					<h5>bgqgedgeg</h5>
-					<p>Thanks to MDB you can take advantage of all feature of newest Bootstrap 4.</p>
-					<span>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere autem expedita optio, velit illum dolores a accusantium dicta deserunt ipsam pariatur. Esse nisi molestiae nulla suscipit delectus saepe quis quos.
-						Animi rem sunt molestiae sed, debitis harum ratione!   rem sunt molestiae sed, debitis harum ratione! rem sunt molestiae sed.Animi rem sunt molestiae sed, debitis harum ratione!   rem sunt molestiae sed, debitis harum ratione! rem sunt molestiae sed.
-                    </span>
-				</div>
-				<div class="col-lg-6 col-sm-12">
-				    <iframe src="https://www.youtube.com/embed/cXTThxoywNQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="shadow"></iframe>
-				</div>
-			</div>
+	<div class="wrap">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Sujets</th>
+						<th scope="col">Réponses</th>
+						<th scope="col">Auteur</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for new_topic in new_topics %}	
+						<tr>		
+							<td>
+								<a href="{{ path('forum_topics_show', {'id': new_topic.id}) }}">{{ new_topic.title }}</a> 
+								<p><small class="text-muted">Le {{ new_topic.createdAt | date('d/m/Y') }}</small></p>
+							</td>
+							<td>{{ new_topic.forumComments | length }}</td>
+							<td>{{ new_topic.author.username }}</td>						
+						</tr>			
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
-	</section>
 
 {% endblock %}

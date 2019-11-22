@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(236, 236, 236);
 }
 
 
@@ -65,7 +65,8 @@ ul.navbar-nav li a:hover {
 /* FOOTER */
 
 footer{
-    margin-top: 10%;;
+    margin-top: 10%;
+    height: 20vh;
 }
 
 /* SEARCHBAR */
@@ -166,7 +167,7 @@ pre code::-webkit-scrollbar-thumb
 .homeHead{
     width: 100%;
     height: 60vh;
-    background: url('https://jmd.im/wp-content/uploads/2017/06/blackii_thumbnail.jpg');    
+    background: url('https://www.pixelstalk.net/wp-content/uploads/2016/05/Amazing-HD-Black-Wallpapers.jpg');    
     background-attachment: fixed; 
     display: flex;
     justify-content: center;
@@ -184,7 +185,7 @@ pre code::-webkit-scrollbar-thumb
 
 footer{
     background-attachment: fixed;
-    background-image: url('https://jmd.im/wp-content/uploads/2017/06/blackii_thumbnail.jpg');
+    background-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/05/Amazing-HD-Black-Wallpapers.jpg');
 }
 
 
@@ -203,7 +204,6 @@ footer{
 .forum-icon{
     font-size: 7vw;
 }
-
 
 
 .forum-cards{
@@ -273,7 +273,18 @@ a.btn{
     background-color: white;
     border-radius: 5px;
     padding: 2%;
-    border: 1px solid #ededed;
+    border: 2px solid #e6e6e6;
+}
+
+#profile-photo{    
+    width: 54px;
+    height: 54px;
+    border-radius: 100%;
+    position: absolute;
+    padding: 3px;
+    top: -15px;
+    left: -80px;
+    border: white 2px solid;
 }
 
 .btn-sm{

@@ -22,15 +22,12 @@ class UserController extends AbstractController
 
     /**
      * @Route("/register", name="user_register", methods={"GET","POST"})
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function register(ForumTopicsRepository $repo, User $user = null, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder): Response
+    public function register(User $user, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
-        if(!$user)
-        {
-            $user = new User();
-            $user->setIsAuth(false);
-        }
+
+        $user = new User();
+        $user->setIsAuth(false);
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -40,35 +37,24 @@ class UserController extends AbstractController
             $hash = $encoder->encodePassword($user, $user->getPassword());
             $user->setPassword($hash);
 
+            if($file = $form->get('photo')->getData())
+            {
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move($this->getParameter('user_photos_folder'), $fileName);
+                $user->setPhoto($fileName);
+            } else {
+                $user->setPhoto('/anonym.jpg');
+            }
+            
             $manager->persist($user);
             $manager->flush();
 
-            if($user->getIsAuth() === false)
-            {
-                return $this->redirectToRoute('user_login');
-    
-            } else {
-                return $this->redirectToRoute('user_edit', [
-                    'id' => $user->getId()
-                ]);
-            }
-        };
-
-        
-        $user_topics = null;
-
-        if($this->getUser() !== null)
-        {
-            $user_topics = $repo->findBy(
-                ['author' => $this->getUser()]
-            );
+            return $this->redirectToRoute('user_login');
         }
-        
+              
         return $this->render('user/register.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-            'user_topics' => $user_topics,
-            'edit' => $user->getId()
         ]);
     }
 
@@ -121,7 +107,7 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/delete", name="user_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, ObjectManager $manager, User $user): Response
+    public function delete(Request $request, ObjectManager $manager, User $user)
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token')))
         {
@@ -130,6 +116,51 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('home');
+    }
+
+
+    /**
+     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, User $user, ForumTopicsRepository $repo)
+    {
+        $currentPhoto = $user->getPhoto();
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            if($file = $form->get('photo')->getData())
+            {
+                $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                $file->move($this->getParameter('user_photos_folder'), $fileName);
+                $user->setPhoto($fileName);
+            } else {
+                $user->setPhoto($currentPhoto);
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('user_edit', [
+                'id' => $user->getId()
+            ]);
+        }
+
+        $user_topics = null;
+
+        if($this->getUser() !== null)
+        {
+            $user_topics = $repo->findBy(
+                ['author' => $this->getUser()]
+            );
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+            'user_topics' => $user_topics,
+        ]);
     }
 }
 

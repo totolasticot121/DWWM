@@ -101,7 +101,6 @@ class ForumCommentsController extends AbstractController
                     'message' => 'commentaire supprimé'
                 ], 200);
             }
-            
         }
             
         return new JsonResponse([
