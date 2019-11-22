@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="head-title mb-5">
+        {% if edit %}
+            <h2>Modifier mon sujet</h2>
+        {% else %}
+            <h2>Nouveau sujet</h2>                
+        {% endif %}     
+    </div>
+
+    <div class="m-auto w-50">
+        <p class="mb-5">Ce forum utilise la syntaxe <strong>markdown</strong> . Si vous ne connaissez pas cette syntaxe vous pouvez suivre ce <strong><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">tutoriel.</a></strong></p>
+        {{ include('forum_topics/_form.html.twig') }}    
+    </div>
+
+{% endblock %}

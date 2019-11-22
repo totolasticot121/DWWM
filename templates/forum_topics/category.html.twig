@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<div class="head-title mb-5">
+		<h2 class="position-absolute">{{ category_title }}</h2>		
+		{% if app.user %}
+			<a href="{{ path('forum_topics_new') }}" class="btn btn-success ml-auto mr-5">Nouveau sujet</a>
+		{% endif %}
+	</div>
+
+	<div class="wrap">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Sujets</th>
+					<th scope="col">Réponses</th>
+					<th scope="col">Auteur</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for forumTopic in forumTopics %}	
+					<tr>		
+						<td>
+							<a href="{{ path('forum_topics_show', {'id': forumTopic.id}) }}">{{ forumTopic.title }}</a> 
+							<p><small class="text-muted">Le {{ forumTopic.createdAt | date('d/m/Y') }}</small></p>
+						</td>
+						<td>{{ forumTopic.forumComments | length }}</td>
+						<td>{{ forumTopic.author.username }}</td>						
+					</tr>			
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

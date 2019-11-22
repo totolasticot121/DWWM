@@ -1,0 +1,14 @@
+{{ form_start(form) }}
+    <div class="row">
+        <div class="col-6">
+            {{ form_row(form.title, {'label': 'Titre'}) }}
+        </div>
+        <div class="col-6">
+            {{ form_row(form.forumCategory, {'label': 'Forum'}) }}
+        </div>
+    </div>
+    {{ form_row(form.content, {'label': 'Question', 'attr': {'placeholder': '### titre \n \n ``` \n Entourez votre code pour bien le mettre en forme \n \n ```'}}) }}
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+
+{{ form_end(form) }}
+

@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="head-title mb-2"><h2>{{ forum_topic.title }}</h2></div>
+
+    <main class="contain m-auto">
+
+        <small class="text-muted">
+            <a href="{{ path('forum_topics_index') }}">Forum</a> / <a href="{{ path('forum_topics_category', {slug: forum_topic.forumCategory.title}) }}">{{ forum_topic.forumCategory.title }}</a> / {{ forum_topic.title }}
+        </small> 
+        
+        <div class="forum-question mt-5">
+            <div class="header mb-3">
+                <h5 class="d-inline-flex">{{ forum_topic.author.username }}</h5>,
+                <small class="text-muted">le {{ forum_topic.createdAt | date('d/m/Y') }} à {{ forum_topic.createdAt | date('H:i') }}</small>
+                {% if app.user and app.user.id == forum_topic.author.id %}
+                    <a class="ml-3 btn btn btn-outline-primary btn-sm" href="{{ path('forum_topics_edit', {'id': forum_topic.id}) }}">éditer</a>
+                    <span class="d-inline-flex">{{ include('forum_topics/_delete_form.html.twig') }}</span>        
+                {% endif %}
+            </div>
+            {{ forum_topic.content | markdown }}
+        </div>
+        <hr>
+        
+        {# get forum id for Ajax request #}
+        <input type="hidden" id="topic-id" class="{{ forum_topic.id }}" >
+
+        <div id="comments-box">
+        {# Comments includes thanks to Ajax request #}
+
+        </div>
+        
+        <div class="loader loader--style3" title="2"> 
+            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"/>
+            </path>
+            </svg>
+        </div>
+        
+        {% if app.user %}
+            {% include "forum_comments/_form.html.twig" %}
+        {% endif %}
+ 
+    </main>
+
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<main>
+
+    <div class="forum-index-header">
+		<div class="row">
+			<div class="title-col">
+				<h2>Forum</h2>
+			</div>
+			<div class="search-col">
+				<input type="text" id="search-bar" placeholder="Rechercher un sujet" autocomplete="off">
+				<div id="display"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+
+		<h3 class="mt-5">Les questions - Langages</h3>
+		
+        <div class="forum-cards pt-3 pb-5">
+
+
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'HTML 5'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-html5-plain-wordmark colored "></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>HTML 5</span>	
+				</div>
+			</div>
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'CSS 3'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-css3-plain-wordmark colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>CSS 3</span>	
+				</div>
+			</div>
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'Javascript'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-javascript-plain colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>Javascript</span>	
+				</div>
+			</div>
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'PHP'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-php-plain colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>PHP</span>	
+				</div>
+			</div>
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'MySQL'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-mysql-plain-wordmark colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>MySQL</span>	
+				</div>
+			</div>
+
+
+		</div>
+
+		<h3>Les questions - CMS/Frameworks</h3>
+
+		<div class="forum-cards pt-3 pb-5">
+
+
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'Angular'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-angularjs-plain colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>Angular</span>	
+				</div>
+			</div>
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'Symfony'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-symfony-original-wordmark colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>Symfony</span>	
+				</div>
+			</div>
+			<div class="card shadow-lg">
+				<a href="{{ path('forum_topics_category', {slug: 'Wordpress'}) }}" class="card-link">
+					<div class="card-icon">
+						<i class="forum-icon devicon-wordpress-plain-wordmark colored"></i>
+					</div>
+				</a> 
+				<div class="card-text">
+					<span>Wordpress</span>	
+				</div>
+			</div>
+			
+		</div>
+		
+    </div>
+
+</main>
+
+{% endblock %}

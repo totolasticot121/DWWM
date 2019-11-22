@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+   <div class="register-form-wrap">
+
+    <div class="form shadow">
+    
+        <h2>Modifier mon profil</h2>
+
+        {{ include('user/_form.html.twig') }}
+        {{ include('user/_delete_form.html.twig') }}
+    </div>
+
+   </div>
+
+{% endblock %}

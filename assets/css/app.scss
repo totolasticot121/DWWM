@@ -1,0 +1,421 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(235, 235, 235);
+}
+
+
+/* NAVBAR */
+
+// Light navbar
+.two{
+    background-color: rgba(255,255,255,1);
+    font-size: 1.5em;
+    transition-duration: 0.5s;
+}
+
+// Black navbar
+.one{
+    background-color: rgba(255,255,255,0);
+    transition-duration: 0.5s;
+    a{   
+        color: white !important;
+        font-size: 1.5em;
+    }
+} 
+
+// Blur on navbar toggle: mobile navigation
+.onToggle{
+    filter: blur(10px);
+    transition-duration: 0.5s;
+}
+
+// Navbar toggle button
+.toggle-btn{
+    height: 5px;
+    min-width: 40px;
+    margin: 5px 0 2px 0;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.tg{
+    outline: none !important;
+    border: none;
+}
+
+// Underline navbar list
+ul.navbar-nav li a{
+    background: linear-gradient(to top, lightblue 0%, lightblue 10%, transparent 10.01%) no-repeat left bottom / 0 100%;
+    transition: background-size .5s;
+}
+
+ul.navbar-nav li a:hover {
+    background-size: 100% 100%;
+}
+
+
+#siteIcon{
+    width: 92px;
+    height: auto;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top: 10%;;
+}
+
+/* SEARCHBAR */
+
+#search-bar{
+    width: 65%;
+    background: #fff;
+    color: #525865;
+    border-radius: 25px;
+    border: 1px solid #d1d1d1;
+    box-shadow: inset 0px 1px 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+    padding: 7px;
+    transition-duration: 0.2s;
+}
+
+#search-bar:hover {
+  box-shadow: inset 1px 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+#search-bar:focus {
+  color: #4b515d;
+  border: 1px solid #B8B6B6;
+  box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.01), 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+#display{
+    position: absolute;
+    background-color: white;
+    width: 24.2%;
+    border-radius: 15px;
+    max-height: 16.2vh;
+    overflow: auto;
+    z-index: 5;
+    display: none;
+}
+
+#display::-webkit-scrollbar {
+    display: none;
+}
+
+pre code::-webkit-scrollbar-track
+{
+	box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+pre code::-webkit-scrollbar
+{
+    background-color: #F5F5F5;
+}
+
+pre code::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: grey
+}
+
+.search-results{
+     display: flex;
+     justify-content: start;
+     align-items: center;
+     width: 100%;
+     a{
+        margin: 0.3em;
+        text-decoration: none;
+        color: black;
+     }
+}
+
+.search-results:hover{
+    background-color: rgb(238, 238, 253);
+}
+
+.forum-index-header{
+    background-color: whitesmoke;
+    height: 20vh;
+    padding-top: 6%;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.search-col{
+    width: 50%;
+}
+
+.title-col{
+    width: 50%;
+    h2{
+        width: 15%;
+        margin-left: 26%;
+    }
+}
+
+/* HOME */
+
+.homeHead{
+    width: 100%;
+    height: 60vh;
+    background: url('https://jmd.im/wp-content/uploads/2017/06/blackii_thumbnail.jpg');    
+    background-attachment: fixed; 
+    display: flex;
+    justify-content: center;
+    .desc{
+        border: 3px solid #ffffff;
+        margin: auto;
+        h1{
+            text-align: center;
+            color: white;
+            margin: 0;
+        }
+    } 
+}
+
+
+footer{
+    background-attachment: fixed;
+    background-image: url('https://jmd.im/wp-content/uploads/2017/06/blackii_thumbnail.jpg');
+}
+
+
+/* FORUM */
+
+.head-title{
+    background-color: whitesmoke;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4%;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.forum-icon{
+    font-size: 7vw;
+}
+
+
+
+.forum-cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    background-color:whitesmoke;
+    border-radius: 5px;
+    border: none;
+    margin: 0.5%;
+    width: 17%;
+    height: 19vh;
+    margin: 1.5%;
+    a{
+        width: 100%;
+    }
+}
+
+.card-link{
+    width: 100%;
+    height: 100%;
+}
+
+
+.card-icon{
+    text-align: center;
+    padding-top: 1%;
+    transition-duration: 0.1s;
+}
+
+.card-icon:hover{
+    transform: scale(1.15);
+    transition-duration: 0.1s;
+}
+
+.card-text{
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    padding: 1px;
+}
+
+.wrap{
+    width: 75%;
+    margin: auto;
+}
+
+.contain{
+    width: 55%;
+}
+
+
+.table a{
+    color: black;
+}
+
+a.btn{
+    max-height: 2.5em;
+}
+
+
+.forum-question, .forum-answer{
+    width: 95%;
+    margin: auto;
+    margin-top: 3%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 2%;
+    border: 1px solid #ededed;
+}
+
+.btn-sm{
+    transform: scale(0.8);
+}
+
+code{
+    border-radius: 7.5px;;
+}
+
+textarea#forum_topics_content{
+    min-height: 30em !important;
+}
+
+label.required{
+    font-size: large;
+}
+
+#comment-content{
+    width: 100%;
+    height: 10vh;
+}
+
+.lastComment{
+    animation: grow 0.4s;
+}
+
+@keyframes grow {
+    0%   {transform: scale(0);}
+    100% {transform: scale(1);}
+}
+
+.loader{
+    margin-left: 40% !important;
+    height: 100px;
+    width: 20%;
+    left: 40%;
+    text-align: center;
+    padding: 1em;
+    margin: 0 auto 1em;
+    display: inline-block;
+    vertical-align: height;
+  }
+svg path, svg rect{
+    fill: rgba(0, 0, 0, 0.678);
+}
+
+/* SECURITY */
+
+.head_resp{
+    width: 40%;
+    padding: 2% 1%;
+}
+
+.login-form-wrap{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form-wrap{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    width: 33.333%;
+    padding: 2%;
+    border-radius: 5px;
+    background-color: white;
+    h2{
+        margin-bottom: 5%;
+    }
+}
+
+/* PROFILE */
+
+.profile-topics-wrap{
+    max-height: 45vh;
+    overflow: auto;
+    border-radius: 5px;
+    table{
+        border-radius: 5px;
+    }
+}
+
+.profile-topics-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+
+@media only screen and (max-width: 1024px) {
+
+    .head_resp{
+        width: 75%;
+        padding: 2%;
+    }
+    .form{
+        width: 50%;
+    
+    }
+    .card{
+        width: 31%;
+        margin: 1%;
+    }
+    .wrap{
+        width: 95%;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    .head_resp{
+        width: 90%;
+        padding: 1%;
+    }
+    .form{
+        width: 90%;
+        padding: 5%;
+    
+    }
+    .card{
+        width: 48%;
+        margin: 1%;
+    }
+    .wrap{
+        width: 95%;
+    }
+
+    .contain{
+        width: 99%;
+    }
+
+    .forum-question, .forum-answer{
+        padding: 3%;
+        margin-top: 3%;
+        width: 98%;
+
+    }
+
+}

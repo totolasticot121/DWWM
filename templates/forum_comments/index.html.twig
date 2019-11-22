@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ForumComments index{% endblock %}
+
+{% block body %}
+    <h1>ForumComments index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Content</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for forum_comment in forum_comments %}
+            <tr>
+                <td>{{ forum_comment.id }}</td>
+                <td>{{ forum_comment.author }}</td>
+                <td>{{ forum_comment.content }}</td>
+                <td>{{ forum_comment.createdAt ? forum_comment.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('forum_comments_show', {'id': forum_comment.id}) }}">show</a>
+                    <a href="{{ path('forum_comments_edit', {'id': forum_comment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('forum_comments_new') }}">Create new</a>
+{% endblock %}
