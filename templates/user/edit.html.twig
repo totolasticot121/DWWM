@@ -34,7 +34,7 @@
                                 <tr>		
                                     <td>
                                         <a style="color: white;" href="{{ path('forum_topics_show', {'id': user_topic.id}) }}">{{ user_topic.title }}</a> 
-                                        <p class="card-text"><small class="text-muted">Le {{ user_topic.createdAt | date('d/m/Y') }}</small></p>
+                                        <p><small class="text-muted">Le {{ user_topic.createdAt | date('d/m/Y') }}</small></p>
                                     </td>
                                     <td>{{ user_topic.forumComments | length }}</td>					
                                 </tr>			

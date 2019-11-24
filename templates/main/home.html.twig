@@ -8,7 +8,7 @@
         </div>
     </header>
     
-	<section class="sec2 trigger mt-5">
+	<section class="sec2 trigger mt-5 pb-5">
 		<div class="container p-5">
 			<div class="row">
 				<div class="col-lg-6 col-sm-12">
@@ -17,35 +17,34 @@
 				<div class="col-lg-6 col-sm-12">
 					<h3 class="mb-3">Un problème dans ton code ?</h3>
 					<p><span>Tu es au bonne endroit ! Le forum DWWM te permettra d'obtenir de l'aide si tu veux débuter le développement ou si tu développe déja.</span></p>
-                    <hr>
-					<p><span>Minima dolor facilis placeat, molestias accusantium illo odit enim quasi repudiandae ullam optio laboriosam.</span></p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<div class="wrap">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Sujets</th>
-						<th scope="col">Réponses</th>
-						<th scope="col">Auteur</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for new_topic in new_topics %}	
-						<tr>		
-							<td>
-								<a href="{{ path('forum_topics_show', {'id': new_topic.id}) }}">{{ new_topic.title }}</a> 
-								<p><small class="text-muted">Le {{ new_topic.createdAt | date('d/m/Y') }}</small></p>
-							</td>
-							<td>{{ new_topic.forumComments | length }}</td>
-							<td>{{ new_topic.author.username }}</td>						
-						</tr>			
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
+	<div class="wrap mt-5">
+		<h3 class="mb-5">Les derniers sujets:</h3>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Sujets</th>
+					<th scope="col">Réponses</th>
+					<th scope="col">Auteur</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for new_topic in new_topics %}	
+					<tr>		
+						<td>
+							<a href="{{ path('forum_topics_show', {'id': new_topic.id}) }}">{{ new_topic.title }}</a> 
+							<p><small class="text-muted">Le {{ new_topic.createdAt | date('d/m/Y') }}</small></p>
+						</td>
+						<td>{{ new_topic.forumComments | length }}</td>
+						<td>{{ new_topic.author.username }}</td>						
+					</tr>			
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
 
 {% endblock %}

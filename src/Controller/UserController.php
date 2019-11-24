@@ -23,7 +23,7 @@ class UserController extends AbstractController
     /**
      * @Route("/register", name="user_register", methods={"GET","POST"})
      */
-    public function register(User $user, Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
+    public function register(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $encoder)
     {
 
         $user = new User();
@@ -122,7 +122,7 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, ForumTopicsRepository $repo)
+    public function edit(Request $request, User $user, ForumTopicsRepository $repo, UserPasswordEncoderInterface $encoder)
     {
         $currentPhoto = $user->getPhoto();
 
@@ -130,6 +130,9 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($hash);
 
             if($file = $form->get('photo')->getData())
             {

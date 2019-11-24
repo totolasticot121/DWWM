@@ -28,13 +28,10 @@
                 <li class="nav-item"><a class="nav-link mr-3" href="{{ path('home') }}">Accueil</a></li>
                 <li class="nav-item"><a class="nav-link mr-3" href="{{ path('forum_topics_index') }}">Forum</a></li>
             </ul>
-
             <ul class="navbar-nav mr-3">
                 {% if not app.user %}
-
                     <li class="nav-item"><a class="nav-item nav-link" href="{{ path('user_register') }}">S'inscrire</a></li>
                     <li class="nav-item"><a class="nav-item nav-link" href="{{ path('user_login') }}">Se connecter</a></li>
-
                 {% else %}
                     <li class="nav-item"><a class="nav-item nav-link" href="{{ path('auth_false', {'id': app.user.id}) }}">Déconnexion</a></li>
                     <li class="nav-item"><a class="nav-item nav-link" href="{{ path('user_edit', {'id': app.user.id}) }}">Mon compte</a></li>
@@ -45,16 +42,14 @@
 
     {% block body %}{% endblock %}
 
-    <footer>
-
-    </footer>
-
+    <footer></footer>
 
     {% block javascripts %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>          
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         {{ encore_entry_script_tags('app') }}
         {{ encore_entry_script_tags('search') }}
         {{ encore_entry_script_tags('comments') }}
