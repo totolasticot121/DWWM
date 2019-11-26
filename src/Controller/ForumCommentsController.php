@@ -29,7 +29,8 @@ class ForumCommentsController extends AbstractController
         {
             $jsonArray = json_decode($data, true); 
             $content = $jsonArray["content"];
-            $article = $repo->findOneBy(array('id' => $jsonArray["article_id"]));
+            $articleId = $jsonArray["article_id"];
+            $article = $repo->findOneBy(array('id' => $articleId));
             
             if($content)
             {
@@ -37,7 +38,7 @@ class ForumCommentsController extends AbstractController
                 $comment->setForumTopic($article)
                         ->setCreatedAt(new \DateTime())
                         ->setContent(htmlspecialchars($content))
-                        ->setAuthor($this->getUser());            
+                        ->setAuthor($this->getUser());
                 
                 $manager->persist($comment);
                 $manager->flush();
@@ -47,8 +48,6 @@ class ForumCommentsController extends AbstractController
                     'message' => 'commentaire ajouté'
                 ], 200);
             }
-
-        } else {
             
             return new JsonResponse([
                 'status' => '400',
@@ -66,19 +65,19 @@ class ForumCommentsController extends AbstractController
 
         if($comments !== null)
         {
+            // Calculating the twig template
             $data = $this->render('forum_comments/show.html.twig', array('comments' => $comments));
             $html = $data->getContent();
-
+            // Return new template in Json
             return new JsonResponse([
                 'status' => '200',
                 'template' => $html,
             ], 200);
-        } else {
-            return new JsonResponse([
-                'status' => '400',
-                'error' => 'no comments found'
-            ], 400);
         }
+        return new JsonResponse([
+            'status' => '400',
+            'error' => 'no comments found'
+        ], 400);  
     }
 
     /**
@@ -91,7 +90,7 @@ class ForumCommentsController extends AbstractController
             $jsonArray = json_decode($data, true); 
             $token = $jsonArray["token"];
 
-            if ($this->isCsrfTokenValid('delete'.$forumComment->getId(), $token ))
+            if ($this->isCsrfTokenValid('delete' . $forumComment->getId(), $token ))
             {
                 $manager->remove($forumComment);
                 $manager->flush();

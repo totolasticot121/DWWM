@@ -4,9 +4,8 @@
 
 body {
     background-color: rgb(233, 233, 233);
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
 }
-
 
 /* NAVBAR */
 
@@ -73,7 +72,7 @@ footer{
 /* SEARCHBAR */
 
 #search-bar{
-    width: 65%;
+    width: 100%;
     background: #fff;
     color: #525865;
     border-radius: 25px;
@@ -97,7 +96,7 @@ footer{
 #display{
     position: absolute;
     background-color: white;
-    width: 24.2%;
+    width: 100%;
     border-radius: 15px;
     max-height: 16.2vh;
     overflow: auto;
@@ -152,7 +151,7 @@ pre code::-webkit-scrollbar-thumb
 }
 
 .search-col{
-    width: 50%;
+    width: 30%;
 }
 
 .title-col{

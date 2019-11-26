@@ -1,3 +1,4 @@
+
 <h4 class="mt-5">{{ comments | length }} Réponses</h4>
 
 {% for comment in comments %}
@@ -6,11 +7,10 @@
             <img id="profile-photo" class="shadow" src="/user_photos/{{ comment.author.photo }}" alt="">
             <h5 class="d-inline-flex">{{ comment.author.username }}</h5>,
             <small class="text-muted">le {{ comment.createdAt | date('d/m/Y') }} à {{ comment.createdAt | date('H:i') }}</small>
-            {% if app.user and app.user.id ==  comment.author.id %}
-                <a href="{{ comment.id }}" id="delete-btn" class="btn btn-outline-danger btn-sm" value="{{ csrf_token('delete' ~ comment.id) }}">supprimer</a>          
+            {% if app.user and app.user.id == comment.author.id %}
+                <a href="{{ comment.id }}" id="delete-btn" class="btn btn-outline-danger btn-sm" value="{{ csrf_token('delete' ~ comment.id) }}">supprimer</a>         
             {% endif %}       
         </div>
         {{ comment.content | markdown }}
     </div> 
 {% endfor %}
-
